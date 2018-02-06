@@ -1,4 +1,4 @@
-let BootState = {
+const BootState = {
     create: () => {
         game.physics.startSystem(Phaser.Physics.ARCADE);
 

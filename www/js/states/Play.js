@@ -5,7 +5,7 @@ let x = false;
 let currentSpeed;
 let timer, timeEvent;
 
-let playState = {
+const playState = {
     
     create: () =>{
         currentSpeed = 0;
@@ -22,7 +22,7 @@ let playState = {
         timerEvent = timer.add(Phaser.Timer.SECOND * 3, playState.endTimer, this);        
         this.textTime = game.add.text(window.innerWidth + 200, window.innerHeight, "", {font: '60px Courier', fill: '#FFFFFF'});
 
-        this.dead = game.add.sprite(1500, 300, 'dead');
+        this.dead = game.add.sprite(1400, 300, 'dead');
         game.physics.enable(this.dead, Phaser.Physics.ARCADE);
         game.physics.arcade.enableBody(this.dead);
         
@@ -74,7 +74,7 @@ let playState = {
         buttonRight.events.onInputDown.add(() => {right = true});
         buttonRight.events.onInputUp.add(() => {right = false});
         
-        let music = game.add.audio('menuSound');
+        this.music = game.add.audio('levelSound');
         music.play('', 0, 1, true);
         music.onLoop.add(playState.playLevelMusic, music);
     },
@@ -110,13 +110,7 @@ let playState = {
             timer.stop();
         }
         
-    },
-    render: () => {
-        game.debug.text('currendSpeed '+ currentSpeed, 10, 40 );
-        game.debug.text('player x '+ this.player.position.x, 10, 70 );
-        
-        game.debug.text('player y ' + this.player.position.y, 10, 90);
-    },
+    },    
     playLevelMusic: (music) => {        
         music.play('', 0, 1, true);
     },
