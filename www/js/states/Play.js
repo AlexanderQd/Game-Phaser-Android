@@ -23,10 +23,12 @@ const playState = {
         this.textTime = game.add.text(window.innerWidth + 200, window.innerHeight, "", {font: '60px Courier', fill: '#FFFFFF'});
 
         this.dead = game.add.sprite(1400, 300, 'dead');
+        this.dead.anchor.setTo(0.5);
         game.physics.enable(this.dead, Phaser.Physics.ARCADE);
         game.physics.arcade.enableBody(this.dead);
         
         this.player = game.add.sprite(900, 300, 'player');
+        this.player.anchor.setTo(0.5);
         this.player.scale.setTo(0.1);
         game.physics.enable(this.player, Phaser.Physics.ARCADE);
         this.player.body.collideWorldBounds = true;
